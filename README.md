@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💳 Check-Pay
 
-## Getting Started
+Sistema de checkout moderno e profissional para assinatura de software, desenvolvido com Next.js 16, React 19, TypeScript e Tailwind CSS v4.
 
-First, run the development server:
+## 🚀 Tecnologias
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Next.js 16.0.7** - Framework React com App Router e Turbopack
+- **React 19.2.0** - Biblioteca JavaScript para interfaces
+- **TypeScript** - Tipagem estática para JavaScript
+- **Tailwind CSS v4** - Framework CSS utilitário
+- **QRCode** - Geração de QR Code para pagamento PIX
+- **Next/Image** - Otimização automática de imagens
+
+
+## 📁 Estrutura do Projeto
+
+```
+check-pay/
+├── app/
+│   ├── page.tsx          # Página principal do checkout
+│   ├── layout.tsx        # Layout global com metadata
+│   └── globals.css       # Estilos globais
+├── components/
+│   ├── checkout/
+│   │   ├── SubscriptionCard.tsx  # Card de assinatura (responsivo)
+│   │   ├── BillingForm.tsx       # Formulário de dados pessoais
+│   │   └── PaymentForm.tsx       # Formulário de pagamento (Cartão/PIX)
+│   └── ui/
+│       └── Button.tsx            # Componente de botão com gradiente
+├── lib/
+│   ├── types/
+│   │   └── checkout.ts           # Tipos TypeScript
+│   └── colors.ts                 # Sistema de cores centralizado
+├── public/
+│   └── images/                   # Imagens e ícones SVG
+└── qrcode.d.ts                   # Declaração de tipos para qrcode
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Funcionalidades
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 🔐 Sistema de Checkout em 2 Etapas
+- **Etapa 1**: Dados Pessoais (nome, email, telefone, CPF)
+- **Etapa 2**: Pagamento (Cartão de Crédito ou PIX)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 💳 Pagamento com Cartão
+- Formatação automática do número do cartão (espaçamento a cada 4 dígitos)
+- Validação de data de validade (MM/AA)
+- Validação de CVV (3 dígitos)
+- Nome em maiúsculas automaticamente
+- Validação inline com mensagens de erro customizadas
 
-## Learn More
+### 🔷 Pagamento PIX
+- Geração de QR Code em tempo real
+- Chave PIX copia e cola
+- Timer de 2 minutos com alerta visual (≤30s fica vermelho)
+- Botão de copiar chave com feedback visual
+- Indicação de pagamento instantâneo
+- QR Code expira após 2 minutos com opção de gerar novo
 
-To learn more about Next.js, take a look at the following resources:
+### ✅ Validação de Formulários
+- Validação em tempo real
+- Mensagens de erro personalizadas e amigáveis
+- Bordas vermelhas em campos com erro
+- Warning boxes com ícone de alerta
+- Formatação brasileira (telefone, CPF)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 📱 Design Responsivo
+- Layout 50/50 em desktop (produto | formulário)
+- Layout empilhado em mobile
+- Card de assinatura com "Exibir detalhes" colapsável (mobile)
+- Footer responsivo com alinhamento adaptativo
+- Imagens otimizadas com Next/Image
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🎉 Tela de Confirmação Profissional
+- Ícone animado de sucesso com gradiente
+- ID de assinatura único gerado automaticamente
+- Badge "ATIVA" em verde
+- Confirmação de email enviada
+- Detalhes completos da assinatura (plano, valor, próxima cobrança)
+- Botão CTA para começar a usar
+- Link de suporte
 
-## Deploy on Vercel
+### 🎨 Elementos Visuais
+- Gradiente verde customizado (45deg, #6CAD7C → #C4E09F)
+- Ícones SVG otimizados
+- Fonte Funnel Sans (Google Fonts)
+- Mensagens de segurança ("Compra segura", "Ambiente protegido")
+- Header com logo e slogan
+- Footer com logo, descrição e email de suporte
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 💰 Produto exemplo
+
+**Aira - Assistente de IA**
+- Valor: R$ 97,00/mês
+- Funcionalidades:
+  - Geração de conteúdo com IA
+  - Assistente de design inteligente
+  - Edição e refinamento de texto
+  - Suporte prioritário
+  - Atualizações contínuas
+  - Acesso a novos recursos
+
+
+
+## 📝 Observações
+
+Este é um projeto de **portfólio frontend**. As funcionalidades de pagamento são demonstrativas e não processam transações reais.
