@@ -316,7 +316,6 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ credits, onUseCred
                 transition: 'all 0.2s',
                 minWidth: '120px',
                 flexShrink: 0,
-                flexShrink: 0,
               }}
               onMouseEnter={(e) => {
                 if (input.trim() && !isTyping) {
