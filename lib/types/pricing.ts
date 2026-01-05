@@ -14,8 +14,8 @@ export const pricingPlans: PricingPlan[] = [
     id: 'starter',
     name: 'Starter',
     price: 29.90,
-    period: 'mensal',
-    description: 'Para quem está validando sua primeira ideia digital.',
+    period: 'mês',
+    description: 'Para quem está validando sua primeira ideia.',
     features: [
       'Análise de até 5 ideias por mês',
       'Definição de MVP essencial',
@@ -29,7 +29,7 @@ export const pricingPlans: PricingPlan[] = [
     id: 'pro',
     name: 'Pro',
     price: 79.90,
-    period: 'mensal',
+    period: 'mês',
     description: 'Para founders e times que precisam iterar rápido.',
     features: [
       'Análise ilimitada de ideias',
@@ -47,8 +47,8 @@ export const pricingPlans: PricingPlan[] = [
     id: 'advanced',
     name: 'Advanced',
     price: 149.90,
-    period: 'mensal',
-    description: 'Para empresas que precisam escalar produtos digitais.',
+    period: 'mês',
+    description: 'Para empresas que querem escalar produtos.',
     features: [
       'Tudo do Pro + recursos avançados',
       'Análise de portfólio de produtos',

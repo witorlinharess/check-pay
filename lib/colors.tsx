@@ -11,7 +11,7 @@ export const colors = {
     main: '#10b981',
   },
   background: {
-    main: '#FFFFFF',
+    main: '#f5f5f5ff',
     dark: '#FFFFFF',
     darkest: '#FFFFFF',
     gray: '#F5F5F5',
@@ -19,7 +19,7 @@ export const colors = {
     cardHover: '#4b5563',
   },
   text: {
-    primary: '#000000',
+    primary: '#323232ff',
     secondary: '#666666',
     light: '#999999',
     white: '#FFFFFF',

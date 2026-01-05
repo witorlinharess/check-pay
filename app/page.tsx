@@ -4,12 +4,14 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { PricingCard } from '@/components/pricing/PricingCard';
+import { LoginModal } from '@/components/auth/LoginModal';
 import { PricingPlan, pricingPlans } from '@/lib/types/pricing';
 import { colors } from '@/lib/colors';
 
 export default function PricingPage() {
   const router = useRouter();
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly');
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   const handleSelectPlan = (plan: PricingPlan) => {
     sessionStorage.setItem('selectedPlan', JSON.stringify(plan));
@@ -23,7 +25,7 @@ export default function PricingPage() {
         padding: '24px 0',
         borderBottom: `1px solid ${colors.border.light}`,
       }}>
-        <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 24px', display: 'flex', justifyContent: 'center' }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Image 
             src="/images/logo/logo-pragma.png" 
             alt="Pragma - IA para Decisões" 
@@ -31,8 +33,34 @@ export default function PricingPage() {
             height={40}
             style={{ height: '40px', width: 'auto' }}
           />
+          <button
+            onClick={() => setIsLoginModalOpen(true)}
+            style={{
+              padding: '10px 24px',
+              fontSize: '14px',
+              fontWeight: '600',
+              border: `1px solid ${colors.border.light}`,
+              borderRadius: '12px',
+              background: colors.background.main,
+              color: colors.text.primary,
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = colors.primary.purple;
+              e.currentTarget.style.backgroundColor = colors.neutral.gray50;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = colors.border.light;
+              e.currentTarget.style.backgroundColor = colors.background.main;
+            }}
+          >
+            Login
+          </button>
         </div>
       </div>
+
+      <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
 
       {/* Content Wrapper Centralizado */}
       <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '64px 24px' }}>
@@ -97,7 +125,7 @@ export default function PricingPage() {
                 borderRadius: '9999px',
                 boxShadow: '0 4px 16px rgba(16, 185, 129, 0.2), 0 4px 16px rgba(139, 92, 246, 0.15)',
               }}>
-                🎉 Economize 20%
+                Economize 20%
               </span>
             )}
           </div>
@@ -117,7 +145,7 @@ export default function PricingPage() {
             const adjustedPlan = billingCycle === 'annual' ? {
               ...plan,
               price: plan.price * 12 * 0.8, // 20% de desconto no anual
-              period: 'anual',
+              period: 'ano',
             } : plan;
             
             return (
@@ -136,7 +164,7 @@ export default function PricingPage() {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '32px', marginTop: '32px', flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <svg
-                style={{ width: '20px', height: '20px', color: colors.primary.green }}
+                style={{ width: '20px', height: '20px', color: colors.primary.purple }}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -185,6 +213,23 @@ export default function PricingPage() {
           </div>
         </div>
       </div>
+
+      {/* Footer */}
+      <footer style={{
+        borderTop: `1px solid ${colors.border.light}`,
+        padding: '32px 24px',
+        backgroundColor: colors.background.main,
+      }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto', textAlign: 'center' }}>
+          <p style={{ 
+            fontSize: '14px', 
+            color: colors.text.secondary,
+            margin: 0,
+          }}>
+            © {new Date().getFullYear()} Pragma. Todos os direitos reservados.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }

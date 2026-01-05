@@ -142,7 +142,7 @@ export const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
             color: colors.text.secondary,
             margin: 0,
           }}>
-            Ambiente protegido por Check-Pay
+            Ambiente protegido por Pragma
           </p>
         </div>
       </div>

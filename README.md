@@ -1,6 +1,6 @@
-# 💳 Check-Pay
+# 🧠 Pragma
 
-Sistema de checkout moderno e profissional para assinatura de software, desenvolvido com Next.js 16, React 19, TypeScript e Tailwind CSS v4.
+IA para tomar decisões melhores em negócios digitais antes de gastar tempo e dinheiro, desenvolvido com Next.js 16, React 19, TypeScript e Tailwind CSS v4.
 
 ## 🚀 Tecnologias
 
@@ -15,7 +15,7 @@ Sistema de checkout moderno e profissional para assinatura de software, desenvol
 ## 📁 Estrutura do Projeto
 
 ```
-check-pay/
+pragma/
 ├── app/
 │   ├── page.tsx          # Página principal do checkout
 │   ├── layout.tsx        # Layout global com metadata

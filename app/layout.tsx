@@ -8,14 +8,14 @@ const funnelSans = Funnel_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Check-Pay - Facilitadora de pagamentos',
-  description: 'Plataforma segura para pagamentos online',
+  title: 'Pragma - IA para Decisões',
+  description: 'Uma IA que ajuda a tomar decisões melhores em negócios digitais antes de gastar tempo e dinheiro.',
   icons: {
     icon: [
       { url: '/favicon.ico' },
-      { url: '/images/favicon.png', type: 'image/png' },
+      { url: '/images/favicon/favicon.png', type: 'image/png' },
     ],
-    apple: '/images/favicon.png',
+    apple: '/images/favicon/favicon.png',
   },
 };
 
