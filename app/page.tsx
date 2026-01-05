@@ -25,8 +25,8 @@ export default function PricingPage() {
       }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 24px', display: 'flex', justifyContent: 'center' }}>
           <Image 
-            src="/images/logo/logo-maind.png" 
-            alt="Aira - IA Assistente" 
+            src="/images/logo/logo-pragma.png" 
+            alt="Pragma - IA para Decisões" 
             width={120}
             height={40}
             style={{ height: '40px', width: 'auto' }}
@@ -39,14 +39,14 @@ export default function PricingPage() {
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
           <h1 style={{ fontSize: '3.5rem', fontWeight: '700', marginBottom: '24px', lineHeight: '1.1' }}>
-            <span style={{ color: colors.text.primary }}>Inteligência Artificial.</span>
+            <span style={{ color: colors.text.primary }}>Construa menos,</span>
             <br />
             <span style={{ background: colors.gradient.vibrant, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent' }}>
-              Preços transparentes.
+              Acerte mais.
             </span>
           </h1>
           <p style={{ fontSize: '1.25rem', color: colors.text.secondary, marginBottom: '32px', maxWidth: '700px', margin: '0 auto 32px auto' }}>
-            Escolha o plano ideal para potencializar seu trabalho com IA desde uso individual até soluções empresariais.
+            Pragma ajuda você a tomar decisões certas antes de gastar tempo e dinheiro construindo o produto errado.
           </p>
 
           {/* Billing Toggle */}

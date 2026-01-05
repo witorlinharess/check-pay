@@ -54,7 +54,7 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
 
   const generatePixKey = async () => {
     // Gera uma chave PIX aleatória
-    const randomKey = `00020126580014br.gov.bcb.pix0136${Math.random().toString(36).substring(2, 15)}${Math.random().toString(36).substring(2, 15)}5204000053039865802BR5913AIRA6009SAO PAULO62070503***6304`;
+    const randomKey = `00020126580014br.gov.bcb.pix0136${Math.random().toString(36).substring(2, 15)}${Math.random().toString(36).substring(2, 15)}5204000053039865802BR5913PRAGMA6009SAO PAULO62070503***6304`;
     setPixKey(randomKey);
     
     // Gera QR Code

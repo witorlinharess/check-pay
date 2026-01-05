@@ -91,7 +91,7 @@ check-pay/
 
 ## 💰 Produto exemplo
 
-**Aira - Assistente de IA**
+**Pragma - IA para Decisões**
 - Valor: R$ 97,00/mês
 - Funcionalidades:
   - Geração de conteúdo com IA

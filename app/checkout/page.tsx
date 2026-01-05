@@ -212,7 +212,7 @@ export default function CheckoutPage() {
         <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <Image 
-              src="/images//logo/logo-maind.png" 
+              src="/images//logo/logo-pragma.png" 
               alt="Aira - IA Assistente" 
               width={120}
               height={40}
@@ -444,7 +444,7 @@ export default function CheckoutPage() {
                     marginTop: '24px',
                     textAlign: 'center',
                   }}>
-                    Precisa de ajuda? <a href="mailto:suporte@aira.ai" style={{ color: colors.text.primary, textDecoration: 'underline' }}>Entre em contato</a>
+                    Precisa de ajuda? <a href="mailto:suporte@pragma.ai" style={{ color: colors.text.primary, textDecoration: 'underline' }}>Entre em contato</a>
                   </p>
                 </div>
               )}
@@ -649,7 +649,7 @@ export default function CheckoutPage() {
             
             <div>
               <Image 
-                src="/images//logo/logo-maind.png" 
+                src="/images//logo/logo-pragma.png" 
                 alt="Aira" 
                 width={96}
                 height={32}
@@ -668,7 +668,7 @@ export default function CheckoutPage() {
                 color: colors.text.light,
                 marginTop: '16px',
               }}>
-                © 2026 Aira. Todos os direitos reservados.
+                © 2026 Pragma. Todos os direitos reservados.
               </p>
             </div>
 
@@ -689,7 +689,7 @@ export default function CheckoutPage() {
                 Precisa de ajuda?
               </p>
               <a 
-                href="mailto:suporte@aira.ai"
+                href="mailto:suporte@pragma.ai"
                 style={{ 
                   fontSize: '14px',
                   color: colors.text.primary,
@@ -705,7 +705,7 @@ export default function CheckoutPage() {
                 onMouseEnter={(e) => e.currentTarget.style.borderColor = colors.text.primary}
                 onMouseLeave={(e) => e.currentTarget.style.borderColor = colors.border.light}
               >
-                suporte@aira.ai
+                suporte@pragma.ai
               </a>
             </div>
           </div>
