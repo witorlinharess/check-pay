@@ -38,33 +38,33 @@ export default function PricingPage() {
       <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '64px 24px' }}>
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-          <h1 style={{ fontSize: '3.5rem', fontWeight: '700', color: colors.text.primary, marginBottom: '24px', lineHeight: '1.1' }}>
-            Inteligência Artificial.
+          <h1 style={{ fontSize: '3.5rem', fontWeight: '700', marginBottom: '24px', lineHeight: '1.1' }}>
+            <span style={{ color: colors.text.primary }}>Inteligência Artificial.</span>
             <br />
-            <span className="bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
+            <span style={{ background: colors.gradient.vibrant, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent' }}>
               Preços transparentes.
             </span>
           </h1>
           <p style={{ fontSize: '1.25rem', color: colors.text.secondary, marginBottom: '32px', maxWidth: '700px', margin: '0 auto 32px auto' }}>
-            Escolha o plano ideal para potencializar seu trabalho com IA — desde uso individual até soluções empresariais.
+            Escolha o plano ideal para potencializar seu trabalho com IA desde uso individual até soluções empresariais.
           </p>
 
           {/* Billing Toggle */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', justifyContent: 'center' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', backgroundColor: colors.background.gray, borderRadius: '9999px', padding: '4px', border: `1px solid ${colors.border.light}` }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', backgroundColor: colors.neutral.gray100, borderRadius: '9999px', padding: '4px', border: `1px solid ${colors.border.light}` }}>
               <button
                 onClick={() => setBillingCycle('monthly')}
                 style={{
                   padding: '8px 24px',
                   borderRadius: '9999px',
                   fontSize: '14px',
-                  fontWeight: '500',
+                  fontWeight: '600',
                   transition: 'all 0.2s',
                   border: 'none',
                   cursor: 'pointer',
-                  backgroundColor: billingCycle === 'monthly' ? colors.primary.white : 'transparent',
-                  color: billingCycle === 'monthly' ? colors.text.primary : colors.text.secondary,
-                  boxShadow: billingCycle === 'monthly' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
+                  background: billingCycle === 'monthly' ? colors.gradient.vibrant : 'transparent',
+                  color: billingCycle === 'monthly' ? colors.text.inverse : colors.text.secondary,
+                  boxShadow: billingCycle === 'monthly' ? '0 4px 16px rgba(16, 185, 129, 0.2), 0 4px 16px rgba(139, 92, 246, 0.15)' : 'none',
                 }}
               >
                 Mensal
@@ -75,13 +75,13 @@ export default function PricingPage() {
                   padding: '8px 24px',
                   borderRadius: '9999px',
                   fontSize: '14px',
-                  fontWeight: '500',
+                  fontWeight: '600',
                   transition: 'all 0.2s',
                   border: 'none',
                   cursor: 'pointer',
-                  backgroundColor: billingCycle === 'annual' ? colors.primary.white : 'transparent',
-                  color: billingCycle === 'annual' ? colors.text.primary : colors.text.secondary,
-                  boxShadow: billingCycle === 'annual' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
+                  background: billingCycle === 'annual' ? colors.gradient.vibrant : 'transparent',
+                  color: billingCycle === 'annual' ? colors.text.inverse : colors.text.secondary,
+                  boxShadow: billingCycle === 'annual' ? '0 4px 16px rgba(16, 185, 129, 0.2), 0 4px 16px rgba(139, 92, 246, 0.15)' : 'none',
                 }}
               >
                 Anual
@@ -89,14 +89,15 @@ export default function PricingPage() {
             </div>
             {billingCycle === 'annual' && (
               <span style={{
-                backgroundColor: colors.ai.badgeBg,
-                color: colors.ai.badgeText,
+                background: colors.gradient.soft,
+                color: colors.text.inverse,
                 fontSize: '13px',
                 fontWeight: '600',
-                padding: '6px 12px',
-                borderRadius: '6px',
+                padding: '8px 16px',
+                borderRadius: '9999px',
+                boxShadow: '0 4px 16px rgba(16, 185, 129, 0.2), 0 4px 16px rgba(139, 92, 246, 0.15)',
               }}>
-                Economize 20%
+                🎉 Economize 20%
               </span>
             )}
           </div>
@@ -132,7 +133,7 @@ export default function PricingPage() {
           <p style={{ color: colors.text.secondary, fontSize: '14px' }}>
             Todos os planos incluem <span style={{ color: colors.text.primary, fontWeight: '600' }}>7 dias de teste grátis</span>. Sem compromisso, cancele quando quiser.
           </p>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '32px', marginTop: '32px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '32px', marginTop: '32px', flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <svg
                 style={{ width: '20px', height: '20px', color: colors.primary.green }}
@@ -151,7 +152,7 @@ export default function PricingPage() {
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <svg
-                style={{ width: '20px', height: '20px', color: colors.primary.green }}
+                style={{ width: '20px', height: '20px', color: colors.primary.purple }}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -167,7 +168,7 @@ export default function PricingPage() {
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <svg
-                style={{ width: '20px', height: '20px', color: colors.primary.green }}
+                style={{ width: '20px', height: '20px', color: colors.primary.purple }}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

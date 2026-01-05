@@ -11,8 +11,8 @@ export interface PricingPlan {
 
 export const pricingPlans: PricingPlan[] = [
   {
-    id: 'basic',
-    name: 'Basic',
+    id: 'starter',
+    name: 'Starter',
     price: 29.90,
     period: 'mensal',
     description: 'Perfeito para indivíduos que querem experimentar o poder da IA.',
@@ -26,8 +26,8 @@ export const pricingPlans: PricingPlan[] = [
     ],
   },
   {
-    id: 'standard',
-    name: 'Standard',
+    id: 'pro',
+    name: 'Pro',
     price: 79.90,
     period: 'mensal',
     description: 'Ideal para profissionais que dependem de IA no dia a dia.',
@@ -44,8 +44,8 @@ export const pricingPlans: PricingPlan[] = [
     badge: 'Mais popular',
   },
   {
-    id: 'diamond',
-    name: 'Diamond',
+    id: 'advanced',
+    name: 'Advanced',
     price: 149.90,
     period: 'mensal',
     description: 'Solução enterprise para empresas que precisam de IA em escala.',
