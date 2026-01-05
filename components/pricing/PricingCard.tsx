@@ -75,13 +75,16 @@ export const PricingCard: React.FC<PricingCardProps> = ({ plan, onSelect, billin
       {/* Preço */}
       <div style={{ marginBottom: '24px' }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
-          <span style={{ fontSize: '48px', fontWeight: '700', color: colors.text.primary }}>
-            R$ {plan.price.toFixed(2).replace('.', ',')}
+          <span style={{ fontSize: '48px', fontWeight: '500', color: colors.text.primary }}>
+            {new Intl.NumberFormat('pt-BR', {
+              style: 'currency',
+              currency: 'BRL'
+            }).format(plan.price)}
           </span>
         </div>
         <p style={{ color: colors.text.secondary, fontSize: '14px', marginTop: '8px' }}>
           por {plan.period}
-          {billingCycle === 'annual' && plan.period === 'anual' && (
+          {billingCycle === 'annual' && plan.period === 'ano' && (
             <span style={{ color: colors.primary.green, marginLeft: '8px', fontWeight: '600' }}>
               • Economize 20%
             </span>

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { Check, Shield } from 'lucide-react';
 import { Subscription } from '@/lib/types/checkout';
 import { colors } from '@/lib/colors';
 
@@ -37,13 +38,16 @@ export const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
             fontWeight: '600',
             color: colors.text.primary,
           }}>
-            R$ {subscription.pricePerInstallment.toFixed(2)}
+            {new Intl.NumberFormat('pt-BR', {
+              style: 'currency',
+              currency: 'BRL'
+            }).format(subscription.pricePerInstallment)}
           </span>
           <span style={{ 
             fontSize: '16px',
             color: colors.text.secondary,
           }}>
-            por mês
+            por {subscription.installments === 1 ? 'mês' : 'ano'}
           </span>
         </div>
         
@@ -118,7 +122,18 @@ export const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {subscription.features.map((feature, index) => (
               <div key={index} style={{ display: 'flex', alignItems: 'start', gap: '10px' }}>
-                <span style={{ color: colors.status.success, fontSize: '16px', marginTop: '2px' }}>✓</span>
+                <div style={{
+                  width: '24px',
+                  height: '24px',
+                  borderRadius: '50%',
+                  background: colors.gradient.vibrant,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                }}>
+                  <Check size={14} color="white" strokeWidth={3} />
+                </div>
                 <span style={{ fontSize: '14px', color: colors.text.secondary, lineHeight: '1.5' }}>
                   {feature}
                 </span>
@@ -136,7 +151,7 @@ export const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
           alignItems: 'center',
           gap: '8px',
         }}>
-          <Image src="/images/safe-icon.svg" alt="" width={18} height={18} />
+          <Shield size={18} color={colors.text.secondary} />
           <p style={{ 
             fontSize: '13px',
             color: colors.text.secondary,

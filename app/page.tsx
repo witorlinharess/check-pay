@@ -22,41 +22,73 @@ export default function PricingPage() {
     <div style={{ minHeight: '100vh', backgroundColor: colors.background.main }}>
       {/* Header com Logo */}
       <div style={{ 
-        padding: '24px 0',
+        padding: '16px 0',
         borderBottom: `1px solid ${colors.border.light}`,
       }}>
-        <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="header-container" style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Image 
             src="/images/logo/logo-pragma.png" 
             alt="Pragma - IA para Decisões" 
             width={120}
             height={40}
-            style={{ height: '40px', width: 'auto' }}
+            className="logo"
+            style={{ height: '35px', width: 'auto' }}
           />
-          <button
-            onClick={() => setIsLoginModalOpen(true)}
-            style={{
-              padding: '10px 24px',
-              fontSize: '14px',
-              fontWeight: '600',
-              border: `1px solid ${colors.border.light}`,
-              borderRadius: '12px',
-              background: colors.background.main,
-              color: colors.text.primary,
-              cursor: 'pointer',
-              transition: 'all 0.2s',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = colors.primary.purple;
-              e.currentTarget.style.backgroundColor = colors.neutral.gray50;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = colors.border.light;
-              e.currentTarget.style.backgroundColor = colors.background.main;
-            }}
-          >
-            Login
-          </button>
+          <div className="header-buttons" style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+            <button
+              onClick={() => router.push('/demo')}
+              className="btn-test"
+              style={{
+                padding: '10px 20px',
+                fontSize: '14px',
+                fontWeight: '600',
+                border: 'none',
+                borderRadius: '12px',
+                background: colors.gradient.vibrant,
+                color: colors.primary.white,
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)',
+                whiteSpace: 'nowrap',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.opacity = '0.9';
+                e.currentTarget.style.transform = 'translateY(-1px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.opacity = '1';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              Testar Grátis
+            </button>
+            <button
+              onClick={() => setIsLoginModalOpen(true)}
+              className="btn-login"
+              style={{
+                padding: '10px 20px',
+                fontSize: '14px',
+                fontWeight: '600',
+                border: `1px solid ${colors.border.light}`,
+                borderRadius: '12px',
+                background: colors.background.main,
+                color: colors.text.primary,
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                whiteSpace: 'nowrap',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = colors.primary.purple;
+                e.currentTarget.style.backgroundColor = colors.neutral.gray50;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = colors.border.light;
+                e.currentTarget.style.backgroundColor = colors.background.main;
+              }}
+            >
+              Login
+            </button>
+          </div>
         </div>
       </div>
 
@@ -66,14 +98,14 @@ export default function PricingPage() {
       <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '64px 24px' }}>
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-          <h1 style={{ fontSize: '3.5rem', fontWeight: '700', marginBottom: '24px', lineHeight: '1.1' }}>
+          <h1 className="main-title" style={{ fontSize: '3.5rem', fontWeight: '600', marginBottom: '24px', lineHeight: '1.1' }}>
             <span style={{ color: colors.text.primary }}>Construa menos,</span>
             <br />
             <span style={{ background: colors.gradient.vibrant, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent' }}>
               Acerte mais.
             </span>
           </h1>
-          <p style={{ fontSize: '1.25rem', color: colors.text.secondary, marginBottom: '32px', maxWidth: '700px', margin: '0 auto 32px auto' }}>
+          <p className="main-subtitle" style={{ fontSize: '1.25rem', color: colors.text.secondary, marginBottom: '32px', maxWidth: '700px', margin: '0 auto 32px auto' }}>
             Pragma ajuda você a tomar decisões certas antes de gastar tempo e dinheiro construindo o produto errado.
           </p>
 
@@ -230,6 +262,83 @@ export default function PricingPage() {
           </p>
         </div>
       </footer>
+
+      {/* Estilos responsivos */}
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .header-container {
+            padding: 0 16px !important;
+          }
+          
+          .logo {
+            height: 30px !important;
+            width: auto !important;
+          }
+          
+          .header-buttons {
+            gap: 8px !important;
+          }
+          
+          .btn-test,
+          .btn-login {
+            padding: 8px 16px !important;
+            font-size: 13px !important;
+          }
+          
+          .main-title {
+            font-size: 2.5rem !important;
+            margin-bottom: 16px !important;
+            padding: 0 16px;
+          }
+          
+          .main-subtitle {
+            font-size: 1.1rem !important;
+            padding: 0 16px;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .header-container {
+            padding: 0 12px !important;
+          }
+          
+          .logo {
+            height: 28px !important;
+            width: auto !important;
+          }
+          
+          .header-buttons {
+            gap: 6px !important;
+          }
+          
+          .btn-test,
+          .btn-login {
+            padding: 7px 12px !important;
+            font-size: 12px !important;
+          }
+          
+          .main-title {
+            font-size: 2rem !important;
+          }
+          
+          .main-subtitle {
+            font-size: 1rem !important;
+          }
+        }
+        
+        @media (max-width: 380px) {
+          .logo {
+            height: 25px !important;
+            width: auto !important;
+          }
+          
+          .btn-test,
+          .btn-login {
+            padding: 6px 10px !important;
+            font-size: 11px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

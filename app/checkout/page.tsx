@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { ChevronLeft, Shield, Lock } from 'lucide-react';
 import { SubscriptionCard } from '@/components/checkout/SubscriptionCard';
 import { PersonalDataForm } from '@/components/checkout/BillingForm';
 import { PaymentForm } from '@/components/checkout/PaymentForm';
@@ -32,7 +33,7 @@ export default function CheckoutPage() {
     name: selectedPlan.name,
     description: selectedPlan.description,
     price: selectedPlan.price,
-    installments: 1,
+    installments: selectedPlan.period === 'ano' ? 12 : 1,
     pricePerInstallment: selectedPlan.price,
     features: selectedPlan.features,
   } : {
@@ -203,33 +204,45 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div style={{ minHeight: '100vh', backgroundColor: colors.background.main }}>
       {/* Header com Logo */}
       <div style={{ 
-        borderBottom: `1px solid ${colors.border.light}`,
         padding: '24px 0',
+        borderBottom: `1px solid ${colors.border.light}`,
       }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <Image 
-              src="/images//logo/logo-pragma.png" 
-              alt="Aira - IA Assistente" 
-              width={120}
-              height={40}
-              style={{ height: '40px', width: 'auto', cursor: 'pointer' }}
-              onClick={() => router.push('/')}
-            />
-            <div>
-              <p style={{ 
-                fontSize: '13px',
-                color: colors.text.secondary,
-                fontWeight: '500',
-                margin: 0,
-              }}>
-                Assistente de IA para criar e produzir
-              </p>
-            </div>
-          </div>
+        <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Image 
+            src="/images/logo/logo-pragma.png" 
+            alt="Pragma - IA para Decisões" 
+            width={120}
+            height={40}
+            style={{ height: '40px', width: 'auto', cursor: 'pointer' }}
+            onClick={() => router.push('/')}
+          />
+          <button
+            onClick={() => router.push('/')}
+            style={{
+              padding: '10px 24px',
+              fontSize: '14px',
+              fontWeight: '600',
+              border: `1px solid ${colors.border.light}`,
+              borderRadius: '12px',
+              background: colors.background.main,
+              color: colors.text.primary,
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = colors.primary.purple;
+              e.currentTarget.style.backgroundColor = colors.neutral.gray50;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = colors.border.light;
+              e.currentTarget.style.backgroundColor = colors.background.main;
+            }}
+          >
+            Voltar
+          </button>
         </div>
       </div>
 
@@ -400,8 +413,15 @@ export default function CheckoutPage() {
                         justifyContent: 'space-between',
                         fontSize: '14px',
                       }}>
-                        <span style={{ color: colors.text.secondary }}>Valor Mensal</span>
-                        <span style={{ fontWeight: '600', color: colors.text.primary }}>R$ {subscription.price.toFixed(2).replace('.', ',')}</span>
+                        <span style={{ color: colors.text.secondary }}>
+                          {subscription.installments === 12 ? 'Valor Anual' : 'Valor Mensal'}
+                        </span>
+                        <span style={{ fontWeight: '600', color: colors.text.primary }}>
+                          {new Intl.NumberFormat('pt-BR', {
+                            style: 'currency',
+                            currency: 'BRL'
+                          }).format(subscription.price)}
+                        </span>
                       </div>
                       <div style={{
                         display: 'flex',
@@ -410,7 +430,7 @@ export default function CheckoutPage() {
                       }}>
                         <span style={{ color: colors.text.secondary }}>Próxima Cobrança</span>
                         <span style={{ fontWeight: '600', color: colors.text.primary }}>
-                          {new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString('pt-BR')}
+                          {new Date(Date.now() + (subscription.installments === 12 ? 365 : 30) * 24 * 60 * 60 * 1000).toLocaleDateString('pt-BR')}
                         </span>
                       </div>
                     </div>
@@ -527,7 +547,6 @@ export default function CheckoutPage() {
                       fullWidth
                     >
                       Avançar para Pagamento
-                      <Image src="/images/arrow-icon.svg" alt="" width={20} height={20} style={{ filter: 'brightness(0) invert(1)' }} />
                     </Button>
                     <div style={{ 
                       marginTop: '16px',
@@ -536,7 +555,7 @@ export default function CheckoutPage() {
                       justifyContent: 'center',
                       gap: '8px',
                     }}>
-                      <Image src="/images/locked-icon.svg" alt="" width={16} height={16} />
+                      <Lock size={16} color={colors.text.secondary} />
                       <p style={{ 
                         fontSize: '13px',
                         color: colors.text.secondary,
@@ -571,7 +590,7 @@ export default function CheckoutPage() {
                     onMouseEnter={(e) => e.currentTarget.style.color = colors.text.primary}
                     onMouseLeave={(e) => e.currentTarget.style.color = colors.text.secondary}
                   >
-                    <Image src="/images/arrow-back.svg" alt="" width={14} height={14} />
+                    <ChevronLeft size={18} />
                     Voltar para dados pessoais
                   </button>
 
@@ -601,10 +620,7 @@ export default function CheckoutPage() {
                             </span>
                           </span>
                         ) : (
-                          <>
-                            <Image src="/images/check-icon.svg" alt="" width={20} height={20} style={{ filter: 'brightness(0) invert(1)' }} />
-                            Finalizar Compra - R$ {subscription.price.toFixed(2).replace('.', ',')}
-                          </>
+                          'Finalizar Compra'
                         )}
                       </Button>
                       <div style={{ 
@@ -614,7 +630,7 @@ export default function CheckoutPage() {
                         justifyContent: 'center',
                         gap: '8px',
                       }}>
-                        <Image src="/images/locked-icon.svg" alt="" width={16} height={16} />
+                        <Lock size={16} color={colors.text.secondary} />
                         <p style={{ 
                           fontSize: '13px',
                           color: colors.text.secondary,

@@ -44,7 +44,10 @@ export const OrderSummary: React.FC<OrderSummaryProps> = ({
               <h3 className="font-semibold text-gray-800">{product.name}</h3>
               <p className="text-sm text-gray-600">Quantidade: <span className="font-medium">{product.quantity}</span></p>
               <p className="text-blue-600 font-bold mt-1 text-lg">
-                R$ {product.price.toFixed(2)}
+                {new Intl.NumberFormat('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL'
+                }).format(product.price)}
               </p>
             </div>
           </div>

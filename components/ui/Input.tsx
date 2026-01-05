@@ -1,4 +1,5 @@
 import React from 'react';
+import { colors } from '@/lib/colors';
 
 interface InputProps {
   label?: string;
@@ -24,16 +25,28 @@ export const Input: React.FC<InputProps> = ({
   icon,
 }) => {
   return (
-    <div className={`mb-4 ${className}`}>
+    <div style={{ marginBottom: '20px' }} className={className}>
       {label && (
-        <label className="block text-sm font-medium text-gray-700 mb-2">
+        <label style={{
+          display: 'block',
+          fontSize: '14px',
+          fontWeight: '600',
+          color: colors.text.primary,
+          marginBottom: '8px',
+        }}>
           {label}
-          {required && <span className="text-red-500 ml-1">*</span>}
+          {required && <span style={{ color: colors.status.error, marginLeft: '4px' }}>*</span>}
         </label>
       )}
-      <div className="relative">
+      <div style={{ position: 'relative' }}>
         {icon && (
-          <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+          <div style={{
+            position: 'absolute',
+            left: '12px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            color: colors.text.light,
+          }}>
             {icon}
           </div>
         )}
@@ -43,12 +56,22 @@ export const Input: React.FC<InputProps> = ({
           onChange={onChange}
           placeholder={placeholder}
           required={required}
-          className={`w-full px-4 py-3 ${icon ? 'pl-10' : ''} border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-gray-800 placeholder-gray-400 ${
-            error ? 'border-red-500 bg-red-50' : 'border-gray-300 hover:border-gray-400 bg-white'
-          }`}
+          style={{
+            width: '100%',
+            padding: icon ? '12px 16px 12px 40px' : '12px 16px',
+            fontSize: '14px',
+            border: `1px solid ${error ? colors.status.error : colors.border.light}`,
+            borderRadius: '12px',
+            outline: 'none',
+            transition: 'border-color 0.2s',
+            backgroundColor: error ? '#FEF2F2' : colors.background.main,
+            color: colors.text.primary,
+          }}
+          onFocus={(e) => e.currentTarget.style.borderColor = error ? colors.status.error : colors.primary.purple}
+          onBlur={(e) => e.currentTarget.style.borderColor = error ? colors.status.error : colors.border.light}
         />
       </div>
-      {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+      {error && <p style={{ color: colors.status.error, fontSize: '13px', marginTop: '6px' }}>{error}</p>}
     </div>
   );
 };

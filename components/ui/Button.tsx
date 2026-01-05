@@ -24,7 +24,7 @@ export const Button: React.FC<ButtonProps> = ({
     padding: '14px 24px',
     fontSize: '15px',
     fontWeight: '600',
-    borderRadius: '8px',
+    borderRadius: '12px',
     border: 'none',
     cursor: disabled ? 'not-allowed' : 'pointer',
     transition: 'all 0.2s',
@@ -38,8 +38,9 @@ export const Button: React.FC<ButtonProps> = ({
 
   const primaryStyle: React.CSSProperties = {
     ...baseStyle,
-    background: `linear-gradient(45deg, ${colors.gradient.one}, ${colors.gradient.two})`,
-    color: colors.primary.white,
+    background: colors.gradient.vibrant,
+    color: colors.text.white,
+    boxShadow: '0 4px 16px rgba(16, 185, 129, 0.25), 0 4px 16px rgba(139, 92, 246, 0.15)',
   };
 
   const secondaryStyle: React.CSSProperties = {
