@@ -54,58 +54,19 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ credits, onUseCred
     setIsTyping(true);
     onUseCredit();
 
-    try {
-      // Chama a API do Gemini
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ message: userInput }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        // Mensagem específica para rate limit
-        if (response.status === 429) {
-          const assistantMessage: Message = {
-            id: (Date.now() + 1).toString(),
-            role: 'assistant',
-            content: data.error || 'Você está enviando muitas mensagens. Por favor, aguarde um momento.',
-            timestamp: new Date(),
-          };
-          setMessages((prev) => [...prev, assistantMessage]);
-          return;
-        }
-        
-        throw new Error(data.error || 'Erro ao processar mensagem');
-      }
-
+    // Simula um pequeno delay para parecer mais realista
+    setTimeout(() => {
+      const aiResponse = getAIResponse(userInput);
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: data.response,
+        content: aiResponse,
         timestamp: new Date(),
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
-    } catch (error) {
-      console.error('Erro ao enviar mensagem:', error);
-      
-      // Fallback para resposta simulada em caso de erro
-      const fallbackResponse = getAIResponse(userInput);
-      const assistantMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        role: 'assistant',
-        content: fallbackResponse,
-        timestamp: new Date(),
-      };
-
-      setMessages((prev) => [...prev, assistantMessage]);
-    } finally {
       setIsTyping(false);
-    }
+    }, 800);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
