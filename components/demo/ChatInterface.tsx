@@ -49,23 +49,63 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ credits, onUseCred
     };
 
     setMessages((prev) => [...prev, userMessage]);
+    const userInput = input.trim();
     setInput('');
     setIsTyping(true);
     onUseCredit();
 
-    // Simula delay de digitação
-    setTimeout(() => {
-      const aiResponse = getAIResponse(input.trim());
+    try {
+      // Chama a API do Gemini
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: userInput }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        // Mensagem específica para rate limit
+        if (response.status === 429) {
+          const assistantMessage: Message = {
+            id: (Date.now() + 1).toString(),
+            role: 'assistant',
+            content: data.error || 'Você está enviando muitas mensagens. Por favor, aguarde um momento.',
+            timestamp: new Date(),
+          };
+          setMessages((prev) => [...prev, assistantMessage]);
+          return;
+        }
+        
+        throw new Error(data.error || 'Erro ao processar mensagem');
+      }
+
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: aiResponse,
+        content: data.response,
         timestamp: new Date(),
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
+    } catch (error) {
+      console.error('Erro ao enviar mensagem:', error);
+      
+      // Fallback para resposta simulada em caso de erro
+      const fallbackResponse = getAIResponse(userInput);
+      const assistantMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: fallbackResponse,
+        timestamp: new Date(),
+      };
+
+      setMessages((prev) => [...prev, assistantMessage]);
+    } finally {
       setIsTyping(false);
-    }, 1500);
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
